@@ -1,0 +1,29 @@
+class Vector:
+    def __init__(self, x, y, z):
+        self.x, self.y, self.z = x, y, z
+    def __add__(self, other):
+        return Vector(self.x + other.x, self.y + other.y, self.z + other.z)
+    def __sub__(self, other):
+        return Vector(self.x - other.x, self.y - other.y, self.z - other.z)
+    def __mul__(self, n):
+        return Vector(self.x * n, self.y * n, self.z * n)
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y and self.z == other.z
+    def dot(self, other):
+        return self.x * other.x + self.y * other.y + self.z * other.z
+    def cross(self, other):
+        x = self.y * other.z - self.z * other.y
+        y = self.z * other.x - self.x * other.z
+        z = self.x * other.y - self.y * other.x
+        return Vector(x, y, z)
+    def display(self):
+        print("(", self.x, ",", self.y, ",", self.z, ")")
+x1, y1, z1 = int(input("Enter x1: ")), int(input("Enter y1: ")), int(input("Enter z1: "))
+x2, y2, z2 = int(input("Enter x2: ")), int(input("Enter y2: ")), int(input("Enter z2: "))
+v1, v2 = Vector(x1, y1, z1), Vector(x2, y2, z2)
+print("\nAddition:"); (v1 + v2).display()
+print("\nSubtraction:"); (v1 - v2).display()
+print("\nScalar Multiplication:"); (v1 * 2).display()
+print("\nEquality:", v1 == v2)
+print("\nDot Product:", v1.dot(v2))
+print("\nCross Product:"); v1.cross(v2).display()
