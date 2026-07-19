@@ -1,0 +1,36 @@
+class Matrix:
+    def __init__(self, m):
+        self.m = m
+    def __add__(self, other):
+        result = [[self.m[i][j] + other.m[i][j] for j in range(len(self.m[0]))] for i in range(len(self.m))]
+        return Matrix(result)
+    def __sub__(self, other):
+        result = [[self.m[i][j] - other.m[i][j] for j in range(len(self.m[0]))] for i in range(len(self.m))]
+        return Matrix(result)
+    def __mul__(self, other):
+        result = [[0 for j in range(len(other.m[0]))] for i in range(len(self.m))]
+        for i in range(len(self.m)):
+            for j in range(len(other.m[0])):
+                for k in range(len(other.m)):
+                    result[i][j] += self.m[i][k] * other.m[k][j]
+        return Matrix(result)
+    def display(self):
+        for row in self.m:
+            print(row)
+r1 = int(input("Enter rows of first matrix: "))
+c1 = int(input("Enter columns of first matrix: "))
+m1 = [list(map(int, input().split())) for i in range(r1)]
+r2 = int(input("\nEnter rows of second matrix: "))
+c2 = int(input("Enter columns of second matrix: "))
+m2 = [list(map(int, input().split())) for i in range(r2)]
+A = Matrix(m1)
+B = Matrix(m2)
+print("\nAddition:")
+(A + B).display()
+print("\nSubtraction:")
+(A - B).display()
+if c1 == r2:
+    print("\nMultiplication:")
+    (A * B).display()
+else:
+    print("\nMatrix multiplication is NOT POSSIBLE")
