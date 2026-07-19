@@ -1,0 +1,14 @@
+class Complex:
+    def __init__(self, r, i):
+        self.real, self.imag = r, i
+    def __add__(self, other):
+        return Complex(self.real + other.real, self.imag + other.imag)
+    def __sub__(self, other):
+        return Complex(self.real - other.real, self.imag - other.imag)
+    def display(self):
+        print(self.real, "+", self.imag, "i")
+r1, i1 = int(input("Enter real part of first complex number: ")), int(input("Enter imaginary part of first complex number: "))
+r2, i2 = int(input("Enter real part of second complex number: ")), int(input("Enter imaginary part of second complex number: "))
+c1, c2 = Complex(r1, i1), Complex(r2, i2)
+print("\nAddition:"); (c1 + c2).display()
+print("subtraction:"); (c1 - c2).display()
