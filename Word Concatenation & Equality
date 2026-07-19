@@ -1,0 +1,12 @@
+class word:
+    def __init__(self, text):
+        self.text = text
+    def __add__(self, other):
+        return word(self.text + other.text)
+    def __eq__(self, other):
+        return self.text == other.text
+s1 = input("Enter first word: ")
+s2 = input("Enter second word: ")
+word1, word2 = word(s1), word(s2)
+print("\nConcatenation:", (word1 + word2).text)
+print("Equality:", word1 == word2)
