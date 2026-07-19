@@ -1,0 +1,24 @@
+class Polynomial:
+    def __init__(self, coeff):
+        self.coeff = coeff
+    def __mul__(self, other):
+        result = [0] * (len(self.coeff) + len(other.coeff) - 1)
+        for i in range(len(self.coeff)):
+            for j in range(len(other.coeff)):
+                result[i + j] += self.coeff[i] * other.coeff[j]
+        return Polynomial(result)
+    def display(self):
+        print(self.coeff)
+n1 = int(input("Enter number of coefficients for first polynomial: "))
+c1 = [int(input()) for i in range(n1)]
+n2 = int(input("Enter number of coefficients for second polynomial: "))
+c2 = [int(input()) for i in range(n2)]
+p1 = Polynomial(c1)
+p2 = Polynomial(c2)
+result = p1 * p2
+print("\nPolynomial 1:")
+p1.display()
+print("Polynomial 2:")
+p2.display()
+print("Multiplication Result:")
+result.display()
